@@ -126,7 +126,7 @@ function init() {
     ])
         .then((data) => {
             // This is added so that the users README doesnt overwrite my README and they can still read it.
-            var fileName = data.fileName + `'s-README.md`;
+            var fileName = data.fileName + ` README.md`;
             writeToFile(fileName, data);
         });
 }
