@@ -5,8 +5,8 @@ const fs = require('fs');
 // TODO: Create an array of questions for user input
 const questions = ['What is the project Title?', 'Write the project description', 'How to install the application', 'How to use the application', 'If any, which license does your application use?', 'How can developers contribute to the project?', 'How did you test the project?', 'Write your email address', 'Write your GitHub username (Case-sensitive)', 'What is your forename?'];
 
-// TODO: Create a function to write README file
-const generateReadMe = ({ title, description, installation, usage, license, contribution, tests, email, github }, licenseSyn) =>
+// In this function, I have created a template for how the README should be structured, using data from the init function to fill out the sections which the user will need to be unqiue for their README.
+const generateReadMe = ({ title, description, installation, usage, license, contributing, tests, email, github }, licenseSyn) =>
     `# ${title}   
  ${licenseSyn}
 ## Description  
@@ -25,17 +25,20 @@ ${installation}
 ${usage}
 ## License  
 ${license.name}
-## Contribution  
-${contribution}
+## Contributing  
+${contributing}
 ## Tests  
 ${tests}  
 ## Questions  
+If you have any questions about this application, contact me via either my email adress or my GitHub account.
 My email address: ${email}  
 My GitHub URL: https://github.com/${github}`;
 
+// TODO: Create a function to write README file
+// This function is using the generateReadMe function and data from init function to generate the README file.
 function writeToFile(fileName, data) {
     const license = data.license;
-    // This is to remove the license badge if the user hasn't used any type of license on theor project
+    // This is to remove the license badge if the user hasn't used any type of license on theor project.
     if (data.license == 'n/a') {
         var licenseSyn = ``
     } else {
@@ -50,6 +53,7 @@ function writeToFile(fileName, data) {
 }
 
 // TODO: Create a function to initialize app
+// In this function, i use inquirer prompt to gain the necessary data from the user to generate their README file.
 function init() {
     inquirer.prompt([
         {
@@ -73,6 +77,7 @@ function init() {
             name: 'usage',
         },
         {
+            // In the license prompt, i have created values for each license which the user can choose, these values will be used for the license label which shall appear near the top of their README file.
             type: 'list',
             message: questions[4],
             name: 'license',
@@ -96,7 +101,7 @@ function init() {
         {
             type: 'input',
             message: questions[5],
-            name: 'contribution',
+            name: 'contributing',
         },
         {
             type: 'input',
@@ -120,7 +125,7 @@ function init() {
         }
     ])
         .then((data) => {
-            // This is added so that the users README doesnt overwrite my README and they can still read it
+            // This is added so that the users README doesnt overwrite my README and they can still read it.
             var fileName = data.fileName + `'s-README.md`;
             writeToFile(fileName, data);
         });
