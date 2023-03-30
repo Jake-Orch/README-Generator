@@ -3,7 +3,7 @@
 ## Description  
 This application's purpose is to generate a professional README for the user using a template I have created, the user filles out the reqiured information asked of them on the command line, then the README generator uses this information to fill in the template and creates their professional README file. The contents of the file created are Title, Description, Table of Contents, Installation, Usage, License, Contribution, Tests, Questions.  
 
-![Image of sample README](./images/README-sample.PNG)
+![Image of sample README](./Images/sample.PNG)
 ## Table of contents
 [Description](#description)  
 [Installation](#installation)  
