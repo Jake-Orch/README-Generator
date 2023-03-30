@@ -16,7 +16,7 @@ ${description}
 [Installation](#installation)  
 [Usage](#usage)  
 [License](#license)  
-[Contribution](#contribution)  
+[Contributing](#contributing)  
 [Tests](#tests)  
 [Questions](#questions)  
 ## Installation  
@@ -30,7 +30,7 @@ ${contributing}
 ## Tests  
 ${tests}  
 ## Questions  
-If you have any questions about this application, contact me via either my email address or my GitHub account.  
+If you have any questions about this application, contact me via either my email address or my GitHub account.    
 My email address: ${email}  
 My GitHub URL: https://github.com/${github}`;
 
