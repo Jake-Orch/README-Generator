@@ -6,9 +6,9 @@ const fs = require('fs');
 const questions = ['What is the project Title?', 'Write the project description', 'How to install the application', 'How to use the application', 'If any, which license does your application use?', 'How can developers contribute to the project?', 'How did you test the project?', 'Write your email address', 'Write your GitHub username (Case-sensitive)', 'Write a prefix for your README file name (should be removed)?'];
 
 // In this function, I have created a template for how the README should be structured, using data from the init function to fill out the sections which the user will need to be unqiue for their README.
-const generateReadMe = ({ title, description, installation, usage, license, contributing, tests, email, github }, licenseSyn) =>
+const generateReadMe = ({ title, description, installation, usage, license, contributing, tests, email, github }, licenseSymbol, licenseName1) =>
     `# ${title}   
- ${licenseSyn}
+ ${licenseSymbol}
 ## Description  
 ${description}  
 ## Table of contents
@@ -24,7 +24,7 @@ ${installation}
 ## Usage  
 ${usage}
 ## License  
-${license.name}
+${licenseName1}
 ## Contributing  
 ${contributing}
 ## Tests  
@@ -37,19 +37,56 @@ My GitHub URL: https://github.com/${github}`;
 // TODO: Create a function to write README file
 // This function is using the generateReadMe function and data from init function to generate the README file.
 function writeToFile(fileName, data) {
+    var licensesymbol = licenseNA(data);
+    var licenseName1 = licenseName(data);
+    const generator = generateReadMe(data, licensesymbol, licenseName1);
+    fs.writeFile(fileName, generator, (err) =>
+        err ? console.log(err) : console.log('Successfully created README.md')
+    );
+}
+
+function licenseNA (data) {
     const license = data.license;
-    // This is to remove the license badge if the user hasn't used any type of license on theor project.
-    if (data.license == 'n/a') {
+    if (license == 'n/a') {
         var licenseSyn = ``
     } else {
         var licenseSyn = `![License](https://img.shields.io/badge/License-${license}-brightgreen.svg)`;
     }
-    console.log(data.license);
-    console.log(licenseSyn);
-    const generator = generateReadMe(data, licenseSyn);
-    fs.writeFile(fileName, generator, (err) =>
-        err ? console.log(err) : console.log('Successfully created README.md')
-    );
+    return licenseSyn
+}
+
+function licenseName(data) {
+    const license = data.license;
+    if (license == 'n/a') {
+        var licenseName = 'N/A'
+    } else if (license == 'Apache_2.0') {
+        var licenseName = 'Apache License 2.0'
+    } else if (license == 'BSD_2--Clause') {
+        var licenseName = 'BSD 2-Clause "Simplified'
+    } else if (license == 'BSD_3--Clause') {
+        var licenseName = 'BSD 3-Clause "New" or "Revised'
+    } else if (license == 'Boost_1.0') {
+        var licenseName = 'Boost Software License 1.0'
+    } else if (license == 'License-CC0_1.0') {
+        var licenseName = 'Creative Commons Zero v1.0 Universal'
+    } else if (license == 'EPL_1.0') {
+        var licenseName = 'Eclipse Public License 2.0'
+    } else if (license == 'GPLv3') {
+        var licenseName = 'GNU General Public License v3.0'
+    } else if (license == 'AGPL_v3') {
+        var licenseName = 'GNU Affero General Public License v3.0'
+    } else if (license == 'GPL_v2') {
+        var licenseName = 'GNU General Public License v2.0'
+    } else if (license == 'LGPL_v2.1') {
+        var licenseName = 'GNU Lesser General Public License v2.1'
+    } else if (license == 'MIT') {
+        var licenseName = 'MIT license'
+    } else if (license == 'MPL_2.0') {
+        var licenseName = 'Mozilla Public License 2.0'
+    } else if (license == 'Unlicense') {
+        var licenseName = 'The Unlicense'
+    }
+    return licenseName;
 }
 
 // TODO: Create a function to initialize app
