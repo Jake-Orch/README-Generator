@@ -21,6 +21,6 @@ To contribute to this project, git clone this repository to your device, make a 
 ## Tests  
 To test this application, simply run the application as stated in usage, by cloning the project to your own device.  
 ## Questions  
-If you have any questions about this application, contact me via either my email address or my GitHub account.
+If you have any questions about this application, contact me via either my email address or my GitHub account.  
 My email address: jakeorchard@live.co.uk  
 My GitHub URL: https://github.com/Jake-Orch
