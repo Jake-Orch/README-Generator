@@ -3,7 +3,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 
 // TODO: Create an array of questions for user input
-const questions = ['What is the project Title?', 'Write the project description', 'How to install the application', 'How to use the application', 'If any, which license does your application use?', 'How can developers contribute to the project?', 'How did you test the project?', 'Write your email address', 'Write your GitHub username (Case-sensitive)', 'What is your forename?'];
+const questions = ['What is the project Title?', 'Write the project description', 'How to install the application', 'How to use the application', 'If any, which license does your application use?', 'How can developers contribute to the project?', 'How did you test the project?', 'Write your email address', 'Write your GitHub username (Case-sensitive)', 'Write a prefix for your README file name (should be removed)?'];
 
 // In this function, I have created a template for how the README should be structured, using data from the init function to fill out the sections which the user will need to be unqiue for their README.
 const generateReadMe = ({ title, description, installation, usage, license, contributing, tests, email, github }, licenseSyn) =>
