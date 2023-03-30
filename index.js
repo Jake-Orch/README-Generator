@@ -30,7 +30,7 @@ ${contributing}
 ## Tests  
 ${tests}  
 ## Questions  
-If you have any questions about this application, contact me via either my email adress or my GitHub account.
+If you have any questions about this application, contact me via either my email address or my GitHub account.
 My email address: ${email}  
 My GitHub URL: https://github.com/${github}`;
 
@@ -45,6 +45,7 @@ function writeToFile(fileName, data) {
     );
 }
 
+// This function removes the license label if the user chooses "None" when choosing a license for their project.
 function licenseNA (data) {
     const license = data.license;
     if (license == 'n/a') {
@@ -55,6 +56,7 @@ function licenseNA (data) {
     return licenseSyn
 }
 
+// This function adds the license name written clearly to be added to the README based on the users choice.
 function licenseName(data) {
     const license = data.license;
     if (license == 'n/a') {
